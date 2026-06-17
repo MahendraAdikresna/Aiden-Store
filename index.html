@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="theme-color" content="#0B1124" />
+    <title>AidenStore – FT SCRIM JB HP ROG & iPhone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #0b1124;
+        font-family: "Inter", sans-serif;
+        color: #e8eaf0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 480px;
+        background: #0b1124;
+        min-height: 100vh;
+      }
+
+      /* ── Hero ── */
+      .hero-bg {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .circuit-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.06;
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: clamp(32px, 8vw, 56px) clamp(16px, 5vw, 32px)
+          clamp(28px, 6vw, 44px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .avatar-ring {
+        width: clamp(88px, 22vw, 112px);
+        height: clamp(88px, 22vw, 112px);
+        border-radius: 50%;
+        border: 3px solid #a8e63d;
+        padding: 4px;
+        margin-bottom: 18px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .avatar-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #131f3a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Rajdhani", sans-serif;
+        font-size: clamp(28px, 7vw, 38px);
+        font-weight: 700;
+        color: #a8e63d;
+        letter-spacing: 1px;
+        overflow: hidden;
+      }
+
+      .avatar-inner img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .status-dot {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #a8e63d;
+        border: 2px solid #0b1124;
+      }
+
+      .store-title {
+        font-size: clamp(10px, 2.5vw, 12px);
+        letter-spacing: 3px;
+        color: #a8e63d;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+
+      .store-name {
+        font-family: "Rajdhani", sans-serif;
+        font-size: clamp(26px, 8vw, 36px);
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 2px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+
+      .store-name span {
+        color: #a8e63d;
+      }
+
+      .divider {
+        width: 40px;
+        height: 2px;
+        background: #a8e63d;
+        margin: 0 auto 14px;
+        border-radius: 2px;
+      }
+
+      .bio {
+        font-size: clamp(13px, 3.5vw, 15px);
+        line-height: 1.75;
+        color: #9ba3b8;
+        max-width: 300px;
+        margin-bottom: 6px;
+      }
+
+      .badge-row {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 12px;
+      }
+
+      .badge {
+        background: #131f3a;
+        border: 1px solid #1e3060;
+        border-radius: 20px;
+        padding: 4px 10px;
+        font-size: clamp(10px, 2.5vw, 12px);
+        color: #a8e63d;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+
+      /* ── Section Label ── */
+      .section-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: #4a5678;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 24px 16px 10px;
+        font-weight: 500;
+      }
+
+      /* ── Event & Tourney Cards ── */
+      .event-card {
+        background: #111b34;
+        border: 1px solid #1e3060;
+        border-radius: 14px;
+        overflow: hidden;
+        margin: 0 16px 16px;
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.2s;
+      }
+
+      .event-card:hover {
+        border-color: #a8e63d;
+      }
+
+      .event-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid #1e3060;
+        object-fit: contain;
+        background: #000;
+      }
+
+      .event-info {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .event-title {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      .btn-register {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: transparent;
+        color: #a8e63d;
+        border: 1px solid #a8e63d;
+        border-radius: 10px;
+        padding: 10px 24px;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s;
+        width: 100%;
+      }
+
+      .btn-register:hover,
+      .btn-register:active {
+        background: #a8e63d;
+        color: #0b1124;
+      }
+
+      /* ── Social Cards ── */
+      .social-list {
+        padding: 0 16px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .social-card {
+        background: #111b34;
+        border: 1px solid #1e3060;
+        border-radius: 14px;
+        padding: clamp(13px, 3.5vw, 18px) clamp(14px, 4vw, 20px);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 14px;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .social-card:hover,
+      .social-card:active {
+        border-color: #a8e63d;
+        background: #13213e;
+      }
+
+      .social-icon {
+        width: clamp(40px, 10vw, 48px);
+        height: clamp(40px, 10vw, 48px);
+        border-radius: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .icon-tiktok {
+        background: #0f1923;
+      }
+      .icon-instagram {
+        background: #1a1025;
+      }
+      .icon-wachannel {
+        background: #0d1f1a;
+      }
+
+      .social-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .social-name {
+        font-family: "Rajdhani", sans-serif;
+        font-size: clamp(15px, 4vw, 17px);
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+      }
+
+      .social-handle {
+        font-size: clamp(11px, 2.8vw, 13px);
+        color: #4a5678;
+        margin-top: 1px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+      }
+
+      .social-arrow {
+        color: #2a3b5e;
+        font-size: 18px;
+        transition: color 0.2s;
+        flex-shrink: 0;
+      }
+
+      .social-card:hover .social-arrow,
+      .social-card:active .social-arrow {
+        color: #a8e63d;
+      }
+
+      /* ── WhatsApp Button ── */
+      .wa-section {
+        padding: 16px 16px 14px;
+      }
+
+      .wa-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #a8e63d;
+        color: #0b1124;
+        border-radius: 14px;
+        padding: clamp(15px, 4vw, 18px) 24px;
+        font-family: "Rajdhani", sans-serif;
+        font-size: clamp(16px, 4.5vw, 19px);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border: none;
+        width: 100%;
+        transition:
+          background 0.15s,
+          transform 0.1s;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .wa-btn:hover {
+        background: #c0f055;
+      }
+      .wa-btn:active {
+        transform: scale(0.98);
+        background: #c0f055;
+      }
+
+      /* ── Footer ── */
+      .footer-text {
+        text-align: center;
+        font-size: 11px;
+        color: #2a3b5e;
+        padding: 16px 16px 32px;
+        letter-spacing: 0.5px;
+      }
+
+      /* ── Extra small screens ── */
+      @media (max-width: 360px) {
+        .badge-row {
+          gap: 5px;
+        }
+        .badge {
+          padding: 3px 8px;
+        }
+        .social-card {
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- ── Hero ── -->
+      <div class="hero-bg">
+        <svg
+          class="circuit-lines"
+          viewBox="0 0 480 420"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="0"
+            y1="70"
+            x2="140"
+            y2="70"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <line
+            x1="140"
+            y1="70"
+            x2="140"
+            y2="120"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <circle cx="140" cy="70" r="3" fill="#A8E63D" />
+          <line
+            x1="340"
+            y1="30"
+            x2="480"
+            y2="30"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <line
+            x1="340"
+            y1="30"
+            x2="340"
+            y2="160"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <circle cx="340" cy="30" r="3" fill="#A8E63D" />
+          <line
+            x1="240"
+            y1="0"
+            x2="240"
+            y2="50"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <circle cx="240" cy="50" r="3" fill="#A8E63D" />
+          <line
+            x1="0"
+            y1="260"
+            x2="80"
+            y2="260"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <circle cx="80" cy="260" r="3" fill="#A8E63D" />
+          <line
+            x1="400"
+            y1="220"
+            x2="480"
+            y2="220"
+            stroke="#A8E63D"
+            stroke-width="1"
+          />
+          <circle cx="400" cy="220" r="3" fill="#A8E63D" />
+        </svg>
+
+        <div class="hero-content">
+          <!-- Avatar Menggunakan Foto Asli -->
+          <div class="avatar-ring">
+            <div class="avatar-inner">
+              <img src="asset/profil ig.jpg" alt="AidenStore Profil" />
+            </div>
+            <div class="status-dot"></div>
+          </div>
+
+          <p class="store-title">Official</p>
+          <h1 class="store-name">Aiden<span>Store</span></h1>
+          <div class="divider"></div>
+
+          <p class="bio">
+            Jual HP? Cari HP? atau Cari Akun Game? Semua jadi lebih mudah di
+            AidenStoreee Jual beli HP ROG & iPhone dan akun dengan harga
+            terbaikS ⚡ Cepat, aman, dan terpercaya untuk setiap transaksi.
+          </p>
+          <p>-Siap Keliling Bali Asalkan Beli-</p>
+
+          <div class="badge-row">
+            <span class="badge">⚡ Cepat </span>
+            <span class="badge">🔒 Terpercaya</span>
+            <span class="badge">✅ 50+ Testimoni </span>
+          </div>
+        </div>
+      </div>
+      <!-- /hero-bg -->
+
+      <!-- ── Social Links ── -->
+      <p class="section-label">Temukan saya di</p>
+
+      <div class="social-list">
+        <!-- Nomor 1: Saluran JB ROG & iPhone -->
+        <a
+          class="social-card"
+          href="https://whatsapp.com/channel/0029VbCDpkOJUM2RCPoH7l1r"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="social-icon icon-wachannel">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.6 1.38 5.1L2 22l4.98-1.35A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"
+                fill="#1A2E1E"
+              />
+              <path
+                d="M17.47 14.83c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.13-1.13-.42-2.15-1.33-.79-.7-1.33-1.57-1.48-1.84-.16-.27-.02-.41.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.46-.16 0-.34-.02-.52-.02s-.47.07-.72.34c-.24.27-.94.92-.94 2.24 0 1.32.96 2.6 1.09 2.78.13.18 1.88 2.87 4.56 4.03.64.27 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.81-1.27.22-.62.22-1.16.15-1.27-.07-.11-.24-.18-.5-.31z"
+                fill="#25D366"
+              />
+            </svg>
+          </div>
+          <div class="social-info">
+            <div class="social-name">Saluran JB ROG &amp; iPhone</div>
+            <div class="social-handle">
+              Follow untuk info stok ROG &amp; iPhone
+            </div>
+          </div>
+          <svg
+            class="social-arrow"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 18l6-6-6-6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+
+        <!-- Nomor 2: Saluran JB Allgame AidenStore -->
+        <a
+          class="social-card"
+          href="https://chat.whatsapp.com/CSXyzCShPg2IrCSyyqiKYR?s=cl&p=i&ilr=2"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="social-icon icon-wachannel">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.6 1.38 5.1L2 22l4.98-1.35A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"
+                fill="#1A2E1E"
+              />
+              <path
+                d="M17.47 14.83c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.13-1.13-.42-2.15-1.33-.79-.7-1.33-1.57-1.48-1.84-.16-.27-.02-.41.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.46-.16 0-.34-.02-.52-.02s-.47.07-.72.34c-.24.27-.94.92-.94 2.24 0 1.32.96 2.6 1.09 2.78.13.18 1.88 2.87 4.56 4.03.64.27 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.81-1.27.22-.62.22-1.16.15-1.27-.07-.11-.24-.18-.5-.31z"
+                fill="#25D366"
+              />
+            </svg>
+          </div>
+          <div class="social-info">
+            <div class="social-name">Saluran JB Allgame AidenStore</div>
+            <div class="social-handle">
+              Follow untuk info stok Allgame AidenStore
+            </div>
+          </div>
+          <svg
+            class="social-arrow"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 18l6-6-6-6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+
+        <!-- Nomor 3: TikTok -->
+        <a
+          class="social-card"
+          href="https://tiktok.com/@aidenstoreee"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="social-icon icon-tiktok">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.22 8.22 0 0 0 4.81 1.54V6.78a4.85 4.85 0 0 1-1.04-.09z"
+                fill="#FFFFFF"
+              />
+            </svg>
+          </div>
+          <div class="social-info">
+            <div class="social-name">TikTok</div>
+            <div class="social-handle">@aidenstoreee</div>
+          </div>
+          <svg
+            class="social-arrow"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 18l6-6-6-6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+
+        <!-- Nomor 4: Instagram -->
+        <a
+          class="social-card"
+          href="https://www.instagram.com/aidenstoreee/"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="social-icon icon-instagram">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <rect
+                x="2"
+                y="2"
+                width="20"
+                height="20"
+                rx="5"
+                stroke="#E1306C"
+                stroke-width="1.8"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="4.5"
+                stroke="#E1306C"
+                stroke-width="1.8"
+              />
+              <circle cx="17.5" cy="6.5" r="1" fill="#E1306C" />
+            </svg>
+          </div>
+          <div class="social-info">
+            <div class="social-name">Instagram</div>
+            <div class="social-handle">
+              Cek testimoni ROG &amp; iPhone di highlight
+            </div>
+          </div>
+          <svg
+            class="social-arrow"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 18l6-6-6-6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+      <!-- /social-list -->
+
+      <!-- ── Fast Tournament & Scrim Section ── -->
+      <p class="section-label">Esports &amp; Turnamen</p>
+
+      <!-- Card Fast Tour -->
+      <div class="event-card">
+        <img
+          src="asset/WhatsApp Image 2026-06-17 at 01.26.13.jpeg"
+          alt="Poster Fast Tour"
+          class="event-img"
+        />
+        <div class="event-info">
+          <h3 class="event-title">FT DENBOY</h3>
+          <a
+            class="btn-register"
+            href="https://wa.me/6281246100748?text=DAFTAR%20FT%20BANG%20DENBOY"
+            target="_blank"
+            rel="noopener"
+          >
+            Daftar Sekarang
+          </a>
+        </div>
+      </div>
+
+      <!-- Card Scrim -->
+      <div class="event-card">
+        <img
+          src="asset/WhatsApp Image 2026-06-17 at 01.26.13 (1).jpeg"
+          alt="Poster Scrim"
+          class="event-img"
+        />
+        <div class="event-info">
+          <h3 class="event-title">SCRIM DENBOY</h3>
+          <a
+            class="btn-register"
+            href="https://wa.me/6281246100748?text=DAFTAR%20SCRIM%20BANG%20DENBOY"
+            target="_blank"
+            rel="noopener"
+          >
+            Daftar Sekarang
+          </a>
+        </div>
+      </div>
+
+      <!-- ── WhatsApp Direct ── -->
+      <p class="section-label">Hubungi langsung</p>
+
+      <div class="wa-section">
+        <a
+          class="wa-btn"
+          href="https://wa.me/6281246100748"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.6 1.38 5.1L2 22l4.98-1.35A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"
+              fill="#0B1124"
+            />
+            <path
+              d="M17.47 14.83c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.13-1.13-.42-2.15-1.33-.79-.7-1.33-1.57-1.48-1.84-.16-.27-.02-.41.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.46-.16 0-.34-.02-.52-.02s-.47.07-.72.34c-.24.27-.94.92-.94 2.24 0 1.32.96 2.6 1.09 2.78.13.18 1.88 2.87 4.56 4.03.64.27 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.81-1.27.22-.62.22-1.16.15-1.27-.07-.11-.24-.18-.5-.31z"
+              fill="#A8E63D"
+            />
+          </svg>
+          Chat via WhatsApp
+        </a>
+      </div>
+
+      <p class="footer-text">
+        AidenStore &middot; FT, SCRIM,JB Akun, HP ROG &amp; iPhone
+      </p>
+    </div>
+    <!-- /page -->
+  </body>
+</html>
